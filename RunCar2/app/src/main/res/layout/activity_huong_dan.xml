@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/hd"
+        android:scaleType="fitXY"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="bottom|left">
+            <ImageButton
+                android:id="@+id/ok_hd"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_null"
+                android:src="@drawable/ok" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"></LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
