@@ -92,9 +92,10 @@
                 android:scaleType="fitCenter"
                 android:background="@drawable/bg_null"
                 android:layout_gravity="bottom"
-                android:paddingBottom="20dp"
                 android:paddingLeft="10dp"
-                android:src="@drawable/ok" />
+                android:paddingBottom="10dp"
+                android:paddingRight="50dp"
+                android:src="@drawable/effect_ok" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"

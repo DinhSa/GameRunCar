@@ -38,7 +38,7 @@ public class Car {
 		RE = new int[so_car];
 		landuong_car = new int[so_car];
 		for (int i = 0; i < so_car; i++) {
-			car[i] = new Sprite(carTexture[i], -10, -10);// Ban đầu thì ta đặt toàn bộ car bên ngoài
+			car[i] = new Sprite(carTexture[i], -100, -100);// Ban đầu thì ta đặt toàn bộ car bên ngoài
 			scene.getTopLayer().add(car[i]);
 
 			// Ban đầu thì không có xe nào được quyền rẽ
@@ -49,7 +49,7 @@ public class Car {
 		}
 
 		//load hiệu ứng nổ
-		HieuUngNo = new Sprite(NoTexture,-10,-10); //tạm để ngoài màn hình
+		HieuUngNo = new Sprite(NoTexture,-100,-100); //tạm để ngoài màn hình
 		scene.getTopLayer().add(HieuUngNo);
 		HieuUngNo.hide();//ẩn đi
 

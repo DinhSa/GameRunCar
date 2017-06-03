@@ -38,7 +38,7 @@
                     android:layout_weight="5"
                     android:background="@drawable/bg_null"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/no"/>
+                    android:src="@drawable/effect_no"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -53,7 +53,7 @@
                     android:layout_weight="5"
                     android:scaleType="fitCenter"
                     android:background="@drawable/bg_null"
-                    android:src="@drawable/yes"/>
+                    android:src="@drawable/effect_yes"/>
 
                 <LinearLayout
                     android:layout_width="0dp"

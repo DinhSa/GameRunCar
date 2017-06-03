@@ -30,6 +30,9 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 	// Dialog hiện thị thông báo hỏi muốn thoát khỏi game
 	private YesNo yesno;
 
+	//
+	private TimeSpeedUp timeSpeedUp;
+
 	// DuongDua. Lớp này để tạo ra đường đua
 	private DuongDua duongdua = new DuongDua();
 
@@ -50,6 +53,10 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 	// Setting. hiện thị button setting.
 	private Sprite setting;
 	private AssetTexture settingTexture;
+
+	//hiển thị thông báo khi đc up speed
+	private Sprite speedup;
+	private AssetTexture speedupTexture;
 
 	// DemNguoc .Khi bắt đầu game thì ta đếm ngược kiểu 3,2,1,go. Khi vẽ xong GO thì ta cho Player di chuyển
 	private DemNguoc demnguoc = new DemNguoc();
@@ -104,6 +111,9 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 		// Load Setting
 		settingTexture = new AssetTexture("setting.png", this);
 
+		//load speedup
+		speedupTexture = new AssetTexture("speedup.png",this);
+
 		// Load DemNguoc
 		demnguoc.load(this);
 
@@ -142,6 +152,15 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 
 		// Khởi tạo điểm
 		dd.init(scene);
+
+		//load speedup lên scene
+		speedup = new Sprite(speedupTexture,-100,-100); //tạm để ngoài màn hình
+		scene.getTopLayer().add(speedup);
+		speedup.hide();
+
+		//khởi tạo TimeSpeedUp
+		timeSpeedUp = new TimeSpeedUp();
+
 
 		//ban đầu cho checkUp = false
 		for(int i=0;i<9;i++)
@@ -221,7 +240,7 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 			} else {
 				if (shape.equals(continue_) && continue_.isVisible()) {//Khi chọn buttong play
 					Control.isPause = false;
-					Control.nhacnen.loop();//cho chạy nhạc nền
+					//Control.nhacnen.loop();//cho chạy nhạc nền
 					continue_.hide();//ẩn buttong continue
 					pause.show();
 					setting.show();//hiện thị button pause và setting
@@ -267,8 +286,16 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 
 						speedUp();//tăng speed nếu có
 
+						//xử lý ẩn thông báo speedup nếu có
+						if(timeSpeedUp.getTime()==0){
+							speedup.hide();
+						}
+
 						//xứ lý va chạm
 						if (Control.isvacham == true) {
+							Control.overGame = true;
+							Control.nhacGameOver.play();
+
 
 							Control.isPause = true;
 							Control.isPlay = false;
@@ -277,18 +304,14 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 							Control.nhacnen.release();
 							Control.nhacnen2.release();
 
-							Control.overGame = true;
-							Control.nhacGameOver.play();
-							overgame.show();
-							//tiếng va chạm
 							try {
-								Thread.sleep(1000);
+								Thread.sleep(800);
+								overgame.show();
 							} catch (InterruptedException e) {
 								e.printStackTrace();
 							}
 
 							try {
-								Control.nhacGameOver.release();
 								Thread.sleep(2000);
 								bangdiem();//
 							} catch (InterruptedException e) {
@@ -353,6 +376,10 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 		case 500:
 			if(checkUp[0]==false){
 				Control.SPEED ++;
+				speedup.move(Control.WIDTH/2-speedup.getWidth()/2,Control.HEIGHT/2-speedup.getHeight()/2);//đặt giữa màn hình
+				timeSpeedUp.setTime(2);//set 2s sẽ ẩn thông báo speedup
+				timeSpeedUp.start();
+				speedup.show();
 				checkUp[0]=true;
 			}
 				break;
@@ -360,12 +387,20 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 			if(checkUp[1]==false){
 				Control.SPEED ++;
 				Control.timeRE--;
+				speedup.move(Control.WIDTH/2-speedup.getWidth()/2,Control.HEIGHT/2-speedup.getHeight()/2);//đặt giữa màn hình
+				timeSpeedUp.setTime(2);//set 2s sẽ ẩn thông báo speedup
+				timeSpeedUp.start();
+				speedup.show();
 				checkUp[1]=true;
 			}
 				break;
 		case 1500:
 			if(checkUp[2]==false){
 				Control.SPEED ++;
+				speedup.move(Control.WIDTH/2-speedup.getWidth()/2,Control.HEIGHT/2-speedup.getHeight()/2);//đặt giữa màn hình
+				timeSpeedUp.setTime(2);//set 2s sẽ ẩn thông báo speedup
+				timeSpeedUp.start();
+				speedup.show();
 				checkUp[2]=true;
 			}
 				break;
@@ -373,12 +408,20 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 			if(checkUp[3]==false){
 				Control.SPEED ++;
 				Control.timeRE--;
+				speedup.move(Control.WIDTH/2-speedup.getWidth()/2,Control.HEIGHT/2-speedup.getHeight()/2);//đặt giữa màn hình
+				timeSpeedUp.setTime(2);//set 2s sẽ ẩn thông báo speedup
+				timeSpeedUp.start();
+				speedup.show();
 				checkUp[3]=true;
 			}
 				break;
 		case 4000:
 			if(checkUp[4]==false){
 				Control.SPEED ++;
+				speedup.move(Control.WIDTH/2-speedup.getWidth()/2,Control.HEIGHT/2-speedup.getHeight()/2);//đặt giữa màn hình
+				timeSpeedUp.setTime(2);//set 2s sẽ ẩn thông báo speedup
+				timeSpeedUp.start();
+				speedup.show();
 				checkUp[4]=true;
 			}
 				break;
@@ -386,12 +429,20 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 			if(checkUp[5]==false){
 				Control.SPEED ++;
 				Control.timeRE--;
+				speedup.move(Control.WIDTH/2-speedup.getWidth()/2,Control.HEIGHT/2-speedup.getHeight()/2);//đặt giữa màn hình
+				timeSpeedUp.setTime(2);//set 2s sẽ ẩn thông báo speedup
+				timeSpeedUp.start();
+				speedup.show();
 				checkUp[5]=true;
 			}
 				break;
 		case 6000:
 			if(checkUp[6]==false){
 				Control.SPEED ++;
+				speedup.move(Control.WIDTH/2-speedup.getWidth()/2,Control.HEIGHT/2-speedup.getHeight()/2);//đặt giữa màn hình
+				timeSpeedUp.setTime(2);//set 2s sẽ ẩn thông báo speedup
+				timeSpeedUp.start();
+				speedup.show();
 				checkUp[6]=true;
 			}
 				break;
@@ -399,12 +450,20 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 			if(checkUp[7]==false){
 				Control.SPEED ++;
 				Control.timeRE--;
+				speedup.move(Control.WIDTH/2-speedup.getWidth()/2,Control.HEIGHT/2-speedup.getHeight()/2);//đặt giữa màn hình
+				timeSpeedUp.setTime(2);//set 2s sẽ ẩn thông báo speedup
+				timeSpeedUp.start();
+				speedup.show();
 				checkUp[7]=true;
 			}
 				break;
 		case 8000:
 			if(checkUp[8]==false){
 				Control.SPEED ++;
+				speedup.move(Control.WIDTH/2-speedup.getWidth()/2,Control.HEIGHT/2-speedup.getHeight()/2);//đặt giữa màn hình
+				timeSpeedUp.setTime(2);//set 2s sẽ ẩn thông báo speedup
+				timeSpeedUp.start();
+				speedup.show();
 				checkUp[8]=true;
 			}
 				break;

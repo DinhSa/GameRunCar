@@ -13,6 +13,7 @@ public class DemNguoc extends Thread {
 	private int i = 3;
 
 	public DemNguoc() {
+
 	}
 
 	// -----------------------------------------------------
