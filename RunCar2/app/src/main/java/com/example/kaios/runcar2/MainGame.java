@@ -224,13 +224,13 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 		if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
 			if (!Control.isPause && Control.isPlay) {//Khi người chơi chọn vào nút pause
 				if (shape.equals(pause) && pause.isVisible()) {
-					Control.nhacnen.stop();//tạm dùng nhạc nền
+					Control.nhacnen2.stop();//tạm dùng nhạc nền
 					Control.isPause = true;
 					continue_.show();//Hiện thị 1 button continue ở giữa màn hình
 					pause.hide();//ẩn button pause và setting
 					setting.hide();
 				} else if (shape.equals(setting) && setting.isVisible()) {//Khi chọn vào button setting
-					Control.nhacnen.stop();//tạm dừng nhạc nền
+					Control.nhacnen2.stop();//tạm dừng nhạc nền
 					Control.isPause = true;
 					continue_.show();//Hiện thị 1 button continue ở giữa màn hình
 					pause.hide();//ẩn button pause và setting
@@ -240,7 +240,7 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 			} else {
 				if (shape.equals(continue_) && continue_.isVisible()) {//Khi chọn buttong play
 					Control.isPause = false;
-					//Control.nhacnen.loop();//cho chạy nhạc nền
+					Control.nhacnen2.loop();//cho chạy nhạc nền
 					continue_.hide();//ẩn buttong continue
 					pause.show();
 					setting.show();//hiện thị button pause và setting
@@ -256,7 +256,7 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 	@Override
 	public boolean onKeyDown(E3Scene scene, int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			Control.nhacnen.stop();//tạm dùng nhạc nền
+			Control.nhacnen2.stop();//tạm dùng nhạc nền
 			Control.isPause = true;
 			continue_.show();//Hiện thị button continue ở giữa màn hình
 			pause.hide();//ẩn button pause và setting
@@ -301,7 +301,6 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 							Control.isPlay = false;
 							// Tat nhac
 							Control.carstart.release();
-							Control.nhacnen.release();
 							Control.nhacnen2.release();
 
 							try {
@@ -325,7 +324,7 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 				//nếu bấm thoát thì thoát game
 				if (Control.thoat){
 					Control.isPlay=false;
-					Control.nhacnen.release();//tắt nhạc
+					//Control.nhacnen.release();//tắt nhạc
 					Control.nhacnen2.release();//tắt nhạc
 					Intent intent = new Intent(MainGame.this, Menu.class);
 					startActivity(intent);
@@ -394,7 +393,7 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 				checkUp[1]=true;
 			}
 				break;
-		case 1500:
+		case 2000:
 			if(checkUp[2]==false){
 				Control.SPEED ++;
 				speedup.move(Control.WIDTH/2-speedup.getWidth()/2,Control.HEIGHT/2-speedup.getHeight()/2);//đặt giữa màn hình

@@ -50,6 +50,7 @@ public class YesNo extends Dialog implements View.OnClickListener {
 
             switch (v.getId()){
                 case R.id.yes:{
+                    Control.nen_menu.release();
                     System.exit(0);//thoát ứng dụng
                     this.hide();
                     break;

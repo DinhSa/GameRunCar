@@ -39,7 +39,7 @@ public class Control {
 
 	public static int diem = 0;// Biến để lưu lại điểm của người chơi.
 
-	public static Sound nhacnen = null, carstart = null, nhacGameOver=null, nen_menu=null, ratings=null, btn=null,
+	public static Sound carstart = null, nhacGameOver=null, nen_menu=null, ratings=null,
 	nhacnen2=null, no=null;
 
 	
@@ -64,7 +64,6 @@ public class Control {
 		timeRE=4;
 
 		Control.no = new Sound(context, R.raw.no);
-		Control.nhacnen = new Sound(context, R.raw.nhacnen);
 		Control.nhacnen2 = new Sound(context, R.raw.nhacnen2);
 		Control.ratings = new Sound(context, R.raw.nhacnen2);
 		Control.nen_menu = new Sound(context, R.raw.nen_menu);
