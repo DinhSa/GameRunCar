@@ -209,7 +209,7 @@ public class MainGame extends E3Activity implements SceneUpdateListener,
 	@Override
 	public boolean onSceneTouchEvent(E3Scene scene, MotionEvent motionEvent) {
 		if (!Control.isPause && Control.isPlay) {
-			if (motionEvent.getAction() == MotionEvent.ACTION_DOWN)
+			if (motionEvent.getAction() == MotionEvent.ACTION_MOVE)
 				Control.touch_up_speed = 10;//Tăng tốc độ thêm 10
 			else
 				Control.touch_up_speed = 0;

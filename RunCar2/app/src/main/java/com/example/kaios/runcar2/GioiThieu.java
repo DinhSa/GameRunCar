@@ -34,7 +34,7 @@ public class GioiThieu extends Activity implements MediaPlayer.OnCompletionListe
 
     // Hiện thị dòng chữ để thông báo cho người dùng biết khi chạm vào màn
     // hình thì bỏ qua phần giới thiệu này.
-        Tools.senMessenger(this,"Touch Skip");
+        Tools.senMessenger(this,"Touch to Skip");
 
         v = (VideoView) findViewById(R.id.videoView);
         Uri u = Uri.parse("android.resource://" + getPackageName() + "/"
